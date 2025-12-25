@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cipher Song • Music Library</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    body {
+      background: linear-gradient(180deg, #0a0a0a, #000);
+      color: white;
+      font-family: system-ui, sans-serif;
+      padding-bottom: 130px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ================= HEADER ================= -->
+  <header class="sticky top-0 z-50 bg-black/70 backdrop-blur border-b border-zinc-800">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+
+      <h1 class="text-xl font-bold">🎧 Cipher Song</h1>
+
+      <div class="flex items-center gap-3">
+        <input
+          id="searchInput"
+          type="text"
+          placeholder="Search songs or artists..."
+          class="w-72 max-w-full p-2 rounded-lg bg-zinc-900 border border-zinc-800 focus:outline-none focus:border-green-500"
+        />
+
+        <!-- LOGOUT -->
+        <button
+          onclick="logout()"
+          class="bg-red-500 text-black px-4 py-2 rounded font-semibold"
+        >
+          Logout
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ================= MAIN ================= -->
+  <main class="max-w-6xl mx-auto px-4 py-6">
+    <h2 class="text-lg font-semibold mb-4 text-zinc-300">
+      All Songs
+    </h2>
+
+    <div
+      id="songList"
+      class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5"
+    >
+      <!-- Songs rendered by JS -->
+    </div>
+  </main>
+
+  <!-- ================= MINI PLAYER ================= -->
+  <div class="fixed bottom-0 left-0 right-0 bg-zinc-900 border-t border-zinc-800 p-3">
+
+    <div class="max-w-6xl mx-auto flex items-center gap-4">
+
+      <img
+        id="playerCover"
+        class="w-14 h-14 rounded-lg object-cover bg-zinc-800"
+        src=""
+        alt="cover"
+      />
+
+      <div class="flex-1 overflow-hidden">
+        <p id="playerTitle" class="font-semibold truncate">
+          Select a song
+        </p>
+        <p id="playerArtist" class="text-xs text-zinc-400 truncate">
+          —
+        </p>
+      </div>
+
+      <button
+        id="playBtn"
+        class="w-12 h-12 rounded-full bg-green-500 text-black text-lg font-bold"
+      >
+        ▶
+      </button>
+
+    </div>
+
+    <input
+      id="progress"
+      type="range"
+      value="0"
+      class="w-full mt-2 accent-green-500"
+    />
+
+    <audio id="audio"></audio>
+  </div>
+
+  <!-- ================= MAIN JS ================= -->
+  <!-- 🔥 ONLY main.js is linked here -->
+  <script type="module" src="./js/main.js"></script>
+
+</body>
+</html>
