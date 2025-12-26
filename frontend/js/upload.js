@@ -1,6 +1,8 @@
+const API = "https://cipher-song-2.onrender.com";
+
 const token = localStorage.getItem("token");
 
-fetch("http://localhost:7000/api/songs", {
+fetch(`${API}/api/songs`, {
   method: "POST",
   headers: {
     Authorization: "Bearer " + token
@@ -28,8 +30,7 @@ async function uploadSong() {
   if (cover) formData.append("cover", cover);
 
   try {
-    const res = await fetch("http://localhost:7000/api/songs", {
-      method: "POST",
+    const res = await fetch(`${API}/api/songs`, {
       body: formData
     });
 

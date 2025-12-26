@@ -5,104 +5,130 @@
   <title>Cipher Song • Music Library</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
     body {
-      background: linear-gradient(180deg, #0a0a0a, #000);
+      background: linear-gradient(180deg, #0a0a0a 10%, #020202 60%, #000 100%);
       color: white;
       font-family: system-ui, sans-serif;
-      padding-bottom: 130px;
+      padding-bottom: 140px;
+    }
+
+    .glass {
+      background: rgba(20, 20, 20, 0.55);
+      backdrop-filter: blur(18px);
     }
   </style>
 </head>
 
 <body>
 
-  <!-- ================= HEADER ================= -->
-  <header class="sticky top-0 z-50 bg-black/70 backdrop-blur border-b border-zinc-800">
-    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+<!-- ================= LEFT SIDEBAR ================= -->
+<div class="flex">
 
-      <h1 class="text-xl font-bold">🎧 Cipher Song</h1>
+  <aside class="hidden md:block w-64 h-screen sticky top-0 p-5 border-r border-zinc-800 glass">
+    <h1 class="text-2xl font-extrabold mb-6">🎧 Cipher Song</h1>
 
-      <div class="flex items-center gap-3">
-        <input
-          id="searchInput"
-          type="text"
-          placeholder="Search songs or artists..."
-          class="w-72 max-w-full p-2 rounded-lg bg-zinc-900 border border-zinc-800 focus:outline-none focus:border-green-500"
-        />
+    <nav class="space-y-4 text-zinc-300">
+      <a class="block hover:text-white" href="index.html">🏠 Home</a>
+      <a class="block hover:text-white" href="library.html">🎵 Your Library</a>
+      <a class="block hover:text-white" href="playlist.html">📀 Playlists</a>
+      <a class="block hover:text-white" href="artist.html">🎙️ Artists</a>
 
-        <!-- LOGOUT -->
-        <button
-          onclick="logout()"
-          class="bg-red-500 text-black px-4 py-2 rounded font-semibold"
-        >
-          Logout
-        </button>
-      </div>
+      <hr class="border-zinc-700 my-4">
 
-    </div>
-  </header>
+      <a class="block hover:text-white" href="upload.html">⬆️ Upload Song</a>
+      <a class="block hover:text-white" href="auth.html">🔐 Login</a>
+      <a class="block hover:text-white" href="signup.html">🆕 Signup</a>
 
-  <!-- ================= MAIN ================= -->
-  <main class="max-w-6xl mx-auto px-4 py-6">
-    <h2 class="text-lg font-semibold mb-4 text-zinc-300">
-      All Songs
-    </h2>
-
-    <div
-      id="songList"
-      class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5"
-    >
-      <!-- Songs rendered by JS -->
-    </div>
-  </main>
-
-  <!-- ================= MINI PLAYER ================= -->
-  <div class="fixed bottom-0 left-0 right-0 bg-zinc-900 border-t border-zinc-800 p-3">
-
-    <div class="max-w-6xl mx-auto flex items-center gap-4">
-
-      <img
-        id="playerCover"
-        class="w-14 h-14 rounded-lg object-cover bg-zinc-800"
-        src=""
-        alt="cover"
-      />
-
-      <div class="flex-1 overflow-hidden">
-        <p id="playerTitle" class="font-semibold truncate">
-          Select a song
-        </p>
-        <p id="playerArtist" class="text-xs text-zinc-400 truncate">
-          —
-        </p>
-      </div>
-
-      <button
-        id="playBtn"
-        class="w-12 h-12 rounded-full bg-green-500 text-black text-lg font-bold"
-      >
-        ▶
+      <button onclick="logout()" class="w-full mt-4 bg-red-500 text-black py-2 rounded-lg font-semibold">
+        Logout
       </button>
+    </nav>
+  </aside>
 
+  <!-- ================= RIGHT CONTENT AREA ================= -->
+  <main class="flex-1">
+
+    <!-- 🔥 HERO SECTION -->
+    <section class="p-6 md:p-10">
+      <div class="rounded-3xl glass p-8 border border-zinc-800">
+        <p class="text-sm text-green-400">Welcome Back</p>
+
+        <h2 class="text-4xl md:text-5xl font-bold mt-2">
+          Dive back into your music world 🎶
+        </h2>
+
+        <p class="text-zinc-400 mt-3 max-w-2xl">
+          Listen to trending songs, explore artists, and enjoy your playlists — all in one place.
+        </p>
+
+        <div class="mt-6 flex gap-4">
+          <a href="library.html" class="px-6 py-2 rounded-full bg-green-500 text-black font-semibold">
+            Go to Library
+          </a>
+
+          <a href="upload.html" class="px-5 py-2 rounded-full bg-zinc-800 border border-zinc-700">
+            Upload Music
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 🔍 SEARCH BAR -->
+    <section class="p-6 md:p-10 pt-0">
+      <input
+        id="searchInput"
+        type="text"
+        placeholder="Search songs or artists…"
+        class="w-full p-3 rounded-xl bg-zinc-900 border border-zinc-700 outline-none"
+      />
+    </section>
+
+    <!-- ⭐ TRENDING SONGS GRID -->
+    <section class="p-6 md:p-10 pt-0">
+      <h3 class="text-2xl font-bold mb-4">🔥 Trending Songs</h3>
+
+      <div id="songList"
+           class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+      </div>
+    </section>
+
+    <!-- 🎙️ TOP ARTISTS ROW -->
+    <section class="p-6 md:p-10 pb-24">
+      <h3 class="text-2xl font-bold mb-4">🎙️ Popular Artists</h3>
+      <div id="artistRow" class="flex gap-5 overflow-x-auto pb-3">
+        <!-- JS will fill -->
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- ================= MINI PLAYER ================= -->
+<div class="fixed bottom-0 left-0 right-0 bg-zinc-900 border-t border-zinc-800 p-3">
+  <div class="max-w-6xl mx-auto flex items-center gap-4">
+    <img id="playerCover" class="w-14 h-14 rounded-lg object-cover bg-zinc-800" alt="cover">
+    <div class="flex-1 overflow-hidden">
+      <p id="playerTitle" class="font-semibold truncate">Select a song</p>
+      <p id="playerArtist" class="text-xs text-zinc-400 truncate">—</p>
     </div>
 
-    <input
-      id="progress"
-      type="range"
-      value="0"
-      class="w-full mt-2 accent-green-500"
-    />
-
-    <audio id="audio"></audio>
+    <button id="playBtn"
+            class="w-12 h-12 rounded-full bg-green-500 text-black text-lg font-bold">
+      ▶
+    </button>
   </div>
 
-  <!-- ================= MAIN JS ================= -->
-  <!-- 🔥 ONLY main.js is linked here -->
-  <script type="module" src="./js/main.js"></script>
+  <input id="progress" type="range" value="0" class="w-full mt-2 accent-green-500"/>
+  <audio id="audio"></audio>
+</div>
+
+<!-- ================= SCRIPTS ================= -->
+<script type="module" src="./js/api.js"></script>
+<script type="module" src="./js/player.js"></script>
+<script type="module" src="./js/main.js"></script>
 
 </body>
 </html>

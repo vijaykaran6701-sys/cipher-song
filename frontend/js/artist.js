@@ -1,3 +1,5 @@
+const API = "https://cipher-song-2.onrender.com";
+
 async function addArtist() {
   const name = document.getElementById("name").value;
   const bio = document.getElementById("bio").value;
@@ -14,7 +16,7 @@ async function addArtist() {
   if (image) formData.append("image", image);
 
   try {
-    const res = await fetch("http://localhost:7000/api/artists", {
+    const res = await fetch(`${API}/api/artists`, {
       method: "POST",
       body: formData
     });

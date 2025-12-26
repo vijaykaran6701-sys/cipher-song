@@ -1,3 +1,5 @@
+const API = "https://cipher-song-2.onrender.com";
+
 async function signup() {
   const name = document.getElementById("name").value;
   const email = document.getElementById("email").value;
@@ -9,7 +11,7 @@ async function signup() {
   }
 
   try {
-    const res = await fetch("http://localhost:7000/api/auth/register", {
+    const res = await fetch(`${API}/api/auth/register`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name, email, password })
